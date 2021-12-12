@@ -24,6 +24,7 @@ import com.rirc.OSGI01.KDCompStepInfoPing;
 import com.rirc.OSGI01.KDCompType;
 import com.rirc.OSGI01.KDConnection;
 import com.rirc.OSGI01.KDStr;
+import com.rirc.OSGI01.KDTransact;
 
 @Component
 @KDCompType(project= "KDOSGIFBSQL", type= "FBAdmin", name= "Только проведение cnv (SYSDBA)", roles= "zkp_Base")
@@ -139,8 +140,7 @@ public class Web_CnvOnly implements KDCompMethod {
 				
 				SQLException rex= null;
 
-				conn.setAutoCommit(false);
-				try {
+				try (KDTransact kdTran= new KDTransact(conn)) {
 					stmt.executeUpdate(sql);
 
 					pstmt_CnvOk.setString(2, "");
@@ -152,9 +152,6 @@ public class Web_CnvOnly implements KDCompMethod {
 					lCnv= cnv;
 				} catch (SQLException ex) {
 					rex= ex;
-					conn.rollback();
-				} finally {
-					conn.setAutoCommit(true);
 				}
 				
 				{

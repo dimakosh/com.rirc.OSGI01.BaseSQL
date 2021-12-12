@@ -2,8 +2,6 @@ package com.rirc.OSGI01.BaseSQL;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +18,7 @@ import com.rirc.OSGI01.KDCompRun;
 import com.rirc.OSGI01.KDCompStepInfoPing;
 import com.rirc.OSGI01.KDCompType;
 import com.rirc.OSGI01.KDConnection;
+import com.rirc.OSGI01.KDFile;
 import com.rirc.OSGI01.KDStr;
 import com.rirc.OSGI01.KDTime;
 
@@ -42,7 +41,7 @@ public class ExecFileSQL implements KDCompMethod {
 
 		boolean lAddTrig= false;
 		try (Connection conn= KDConnection.get(connPrms, true);
-			 BufferedReader inp= new BufferedReader(new InputStreamReader(new FileInputStream(file), "Cp1251"))) {
+			 BufferedReader inp= KDFile.ansiBufferedReader(file)) {
 			
 			String BLOCK_MONTH= String.valueOf(KDTime.getCurMonth());
 
