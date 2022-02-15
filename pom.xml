@@ -6,10 +6,10 @@
 	<version>0.0.1</version>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.target>11</maven.compiler.target>
-		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
 	</properties>
 
 	<packaging>bundle</packaging>
@@ -34,7 +34,7 @@
 	        <plugin>
 	            <groupId>org.apache.felix</groupId>
 	            <artifactId>maven-bundle-plugin</artifactId>
-	            <version>4.2.1</version>
+	            <version>5.1.4</version>
 	            <extensions>true</extensions>
 	            <configuration>
 	                <instructions>
